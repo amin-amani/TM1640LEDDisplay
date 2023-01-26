@@ -1,5 +1,7 @@
 # TM1640LEDDisplay
-show numbers with esp32 on  led array using tm1640 and tm1640B 
+show numbers with esp32 on  led array using tm1640 and tm1640B
+
+Both TM1640 and 1460B worked with same code!
  
  ### here is a schematic:
 ![This is an image](https://github.com/amin-amani/TM1640LEDDisplay/blob/main/doc/schematic.PNG)
