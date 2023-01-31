@@ -32,6 +32,12 @@ void loop()
 ![This is an image](https://github.com/amin-amani/TM1640LEDDisplay/blob/main/doc/set%20seg.PNG)
 
 
+ ### here is a signal image for set grid  with addres 1 and 2  :
+![This is an image](https://github.com/amin-amani/TM1640LEDDisplay/blob/main/doc/grid-intensity7.PNG)
+
+![This is an image](https://github.com/amin-amani/TM1640LEDDisplay/blob/main/doc/grid-intensity7-zoomout.PNG)
+
+
 ### usefull links:
 
 https://wiki.keyestudio.com/KS0357A_Keyestudio_8x16_LED_Matrix_Panel
