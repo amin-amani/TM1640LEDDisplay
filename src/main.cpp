@@ -54,20 +54,28 @@ void DisplayNumber(uint8_t numL, uint16_t num, uint16_t numR, uint8_t ring, bool
     numL = 0;
 
   module.setSegments(SEG_NUMS[num % 10] | ((ring > 2) << 7), 4);
+  module.setSegments(SEG_NUMS[num % 10] | ((ring > 2) << 7), 5);
   num /= 10;
-  module.setSegments(SEG_NUMS[num % 10] | ((ring > 1) << 7), 2);
+  module.setSegments((num > 0) ? (SEG_NUMS[num % 10] | ((ring > 1) << 7)) : ((ring > 1) << 7), 2);
+  module.setSegments((num > 0) ? (SEG_NUMS[num % 10] | ((ring > 1) << 7)) : ((ring > 1) << 7), 3);
   num /= 10;
-  module.setSegments(SEG_NUMS[num % 10] | ((ring > 0) << 7), 0);
+  module.setSegments((num > 0)? (SEG_NUMS[num % 10] | ((ring > 0) << 7)):((ring > 0) << 7), 0);
+  module.setSegments((num > 0) ? (SEG_NUMS[num % 10] | ((ring > 0) << 7)) : ((ring > 0) << 7), 1);
 
-  module.setSegments(SEG_NUMS[numL % 10] | ((ring > 4) << 7), 8);
+  module.setSegments((SEG_NUMS[numL % 10] | ((ring > 4) << 7)) , 8);
+  module.setSegments((SEG_NUMS[numL % 10] | ((ring > 4) << 7)) , 9);
   numL /= 10;
-  module.setSegments(SEG_NUMS[numL % 10] | ((ring > 3) << 7), 6);
+  module.setSegments((numL > 0) ? (SEG_NUMS[numL % 10] | ((ring > 3) << 7)) : ((ring > 3) << 7), 6);
+  module.setSegments((numL > 0) ? (SEG_NUMS[numL % 10] | ((ring > 3) << 7)) : ((ring > 3) << 7), 7);
 
-  module.setSegments(SEG_NUMS[numR % 10] | ((leftLed) << 7), 14);
+  module.setSegments( (SEG_NUMS[numR % 10] | ((leftLed) << 7)), 14);
+  module.setSegments( (SEG_NUMS[numR % 10] | ((leftLed) << 7)) , 15);
   numR /= 10;
-  module.setSegments(SEG_NUMS[numR % 10] | ((rightLed) << 7), 12);
+  module.setSegments((numR > 0) ? (SEG_NUMS[numR % 10] | ((rightLed) << 7)) : ((rightLed) << 7), 12);
+  module.setSegments((numR > 0) ? (SEG_NUMS[numR % 10] | ((rightLed) << 7)) : ((rightLed) << 7), 13);
   numR /= 10;
-  module.setSegments(SEG_NUMS[numR % 10] | ((ring > 5) << 7), 10);
+  module.setSegments((numR > 0) ? (SEG_NUMS[numR % 10] | ((ring > 5) << 7)) : ((ring > 5) << 7), 10);
+  module.setSegments((numR > 0) ? (SEG_NUMS[numR % 10] | ((ring > 5) << 7)) : ((ring > 5) << 7), 11);
 }
 void setup()
 {
@@ -83,7 +91,9 @@ int i = 0;
 void loop()
 {
   module.setupDisplay(true, 1);
-  delay(500); // wait
-  DisplayNumber(123, 456, 127, 123, 0, 0);
 
+  delay(1000); // wait
+
+  DisplayNumber(i % 100, i % 1000, i % 1000, i % 7, i % 2 ? 0 : 1, i % 2 ? 1 : 0);
+  i++;
 }
